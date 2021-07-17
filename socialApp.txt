@@ -1,0 +1,462 @@
+++++++++++++++++++++++++++++ Dependencies ++++++++++++++++++++++++++++++++++
+
+
+
+"dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-firebase/app": "^8.3.0",
+    "@react-native-firebase/auth": "^8.3.1",
+    "@react-native-firebase/database": "^7.4.1",
+    "@react-native-firebase/storage": "^7.3.1",
+    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
+    "native-base": "^2.13.13",
+    "prop-types": "^15.7.2",
+    "react": "16.13.1",
+    "react-native": "0.63.2",
+    "react-native-gesture-handler": "^1.7.0",
+    "react-native-image-picker": "^2.3.3",
+    "react-native-progress": "^4.1.2",
+    "react-native-reanimated": "^1.11.0",
+    "react-native-safe-area-context": "^3.1.4",
+    "react-native-screens": "^2.10.1",
+    "react-native-snackbar": "^2.2.3",
+    "react-native-vector-icons": "^7.0.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "shortid": "^2.2.15"
+  },
+
+
+
+
+++++++++++++++++++++++++++++ Dependencies ++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++ Icons ++++++++++++++++++++++++++++++++++
+
+
+Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+
+++++++++++++++++++++++++++++ Icons ++++++++++++++++++++++++++++++++++
+
+Add Config files in Android app (and iOS too if you are working on it )
+
+++++++++++++++++++++++++++++ Signup file ++++++++++++++++++++++++++++++++++
+
+return (
+    <Container style={styles.container}>
+      <Content padder>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+          <View style={styles.imageContainer}>
+            <TouchableOpacity onPress={chooseImage}>
+              <Thumbnail large source={{uri: image}} />
+            </TouchableOpacity>
+          </View>
+
+          {imageUploading && (
+            <ProgressBar progress={uploadStatus} style={styles.progress} />
+          )}
+
+          <Form>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="name"
+                value={name}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setName(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="email"
+                value={email}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setEmail(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="password"
+                value={password}
+                secureTextEntry={true}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setPassword(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="Instagram user name"
+                value={instaUserName}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setInstaUserName(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="Your Short Bio"
+                value={bio}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setBio(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="country"
+                value={country}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setCountry(text)}
+              />
+            </Item>
+            <Button regular block onPress={doSignUp}>
+              <Text>SignUp</Text>
+            </Button>
+          </Form>
+        </ScrollView>
+      </Content>
+    </Container>
+  );
+
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#1b262c',
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  progress: {width: null, marginBottom: 20},
+  formItem: {
+    marginBottom: 20,
+  },
+});
+
+
+++++++++++++++++++++++++++++ Signup file ++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++ Signin file ++++++++++++++++++++++++++++++++++
+
+
+return (
+    <Container style={styles.container}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <H3 style={styles.heading}>Welcome to the Travel-gram Social App</H3>
+
+        <Image
+          source={Welcome}
+          style={{width: null, height: 150, marginTop: 30}}
+          resizeMode="contain"
+        />
+
+        <Form>
+          <Item rounded style={styles.formItem}>
+            <Input
+              placeholder="enter your registerd email"
+              value={email}
+              style={{color: '#eee'}}
+              onChangeText={(text) => setEmail(text)}
+            />
+          </Item>
+          <Item rounded style={styles.formItem}>
+            <Input
+              placeholder="enter your registerd password"
+              value={password}
+              secureTextEntry={true}
+              style={{color: '#eee'}}
+              onChangeText={(text) => setPassword(text)}
+            />
+          </Item>
+          <Button rounded block onPress={doSignIn}>
+            <Text>SignIn</Text>
+          </Button>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SignUp')}
+            style={{marginTop: 10}}>
+            <Text style={{color: '#fff', textAlign: 'center'}}>
+              Do not have an account, SignUp here
+            </Text>
+          </TouchableOpacity>
+        </Form>
+      </ScrollView>
+    </Container>
+  );
+
+
+
+  const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#1b262c',
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  heading: {
+    textAlign: 'center',
+    color: '#fdcb9e',
+    marginHorizontal: 5,
+    marginTop: 30,
+  },
+  formItem: {
+    marginBottom: 20,
+  },
+});
+
+
+++++++++++++++++++++++++++++ Signin file ++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++ AddPost file ++++++++++++++++++++++++++++++++++
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, ScrollView, Image} from 'react-native';
+import {
+  Container,
+  Content,
+  Form,
+  Item,
+  Input,
+  Text,
+  Button,
+  H3,
+  Textarea,
+  Icon,
+} from 'native-base';
+
+return (
+    <Container style={styles.container}>
+      <Content padder>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+          {image && (
+            <Image
+              source={{uri: image}}
+              style={styles.image}
+              resizeMode="center"
+            />
+          )}
+          <Form>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="location"
+                value={location}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setLocation(text)}
+              />
+            </Item>
+
+            {imageUploading ? (
+              <ProgressBar progress={uploadStatus} style={styles.progress} />
+            ) : (
+              <Button
+                regular
+                bordered
+                block
+                iconLeft
+                info
+                style={styles.formItem}
+                onPress={chooseImage}>
+                <Icon
+                  name="md-image-outline"
+                  type="Ionicons"
+                  style={styles.icon}
+                />
+                <Text
+                  style={{
+                    color: '#fdcb9e',
+                  }}>
+                  Choose Image
+                </Text>
+              </Button>
+            )}
+
+            <Item regular style={styles.formItem}>
+              <Textarea
+                rowSpan={5}
+                placeholder="Some description..."
+                value={description}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setDescription(text)}
+              />
+            </Item>
+
+            <Button regular block onPress={addPost}>
+              <Text>Add Post</Text>
+            </Button>
+          </Form>
+        </ScrollView>
+      </Content>
+    </Container>
+  );
+
+
+  const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#1b262c',
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  formItem: {
+    marginBottom: 20,
+  },
+  icon: {fontSize: 20, color: '#fdcb9e'},
+  image: {width: null, height: 150, marginVertical: 15},
+  progress: {width: null, marginBottom: 20},
+});
+
+
+
+++++++++++++++++++++++++++++ AddPost file ++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++ Permission file ++++++++++++++++++++++++++++++++++
+android/app/src/main/AndroidManifest
+
+
+<uses-permission android:name="android.permission.CAMERA" />
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+++++++++++++++++++++++++++++ Permission file ++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++ Home file ++++++++++++++++++++++++++++++++++
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#1b262c',
+    justifyContent: 'flex-start',
+    padding: 4,
+    flex: 1,
+  },
+  emptyContainer: {
+    flex: 1,
+    backgroundColor: '#1b262c',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+
+
+++++++++++++++++++++++++++++ Home file ++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++ Post file ++++++++++++++++++++++++++++++++++
+
+import React, {useState, useEffect} from 'react';
+import {Image, Linking} from 'react-native';
+import {
+  Card,
+  CardItem,
+  Thumbnail,
+  Text,
+  Button,
+  Icon,
+  Left,
+  Body,
+  Right,
+} from 'native-base';
+import database from '@react-native-firebase/database';
+
+
+return (
+    <Card
+      style={{
+        backgroundColor: '#0f4c75',
+        borderColor: '#0f4c75',
+      }}>
+      <CardItem
+        style={{
+          backgroundColor: 'transparent',
+        }}>
+        <Left>
+          <Thumbnail source={{uri: item.userImage}} small />
+          <Body>
+            <Text
+              style={{
+                color: '#fdcb9e',
+              }}>
+              {item.by}
+            </Text>
+
+            <Text note>{item.location}</Text>
+          </Body>
+        </Left>
+      </CardItem>
+      <CardItem cardBody>
+        <Image
+          source={{uri: item.picture}}
+          style={{height: 200, width: null, flex: 1}}
+        />
+      </CardItem>
+      <CardItem
+        cardBody
+        style={{
+          backgroundColor: 'transparent',
+        }}>
+        <Text
+          numberOfLines={2}
+          style={{
+            color: '#fff',
+          }}>
+          {item.description}
+        </Text>
+      </CardItem>
+
+      <CardItem
+        style={{
+          backgroundColor: '#0f4c75',
+        }}>
+        <Left>
+          <Button transparent onPress={upVotePost}>
+            <Icon
+              name="thumbs-up"
+              type="Entypo"
+              style={{fontSize: 20, color: '#fdcb9e'}}
+            />
+            <Text
+              style={{
+                color: '#fdcb9e',
+              }}>
+              {upvote}
+            </Text>
+          </Button>
+          <Button transparent onPress={downVotePost}>
+            <Icon
+              name="thumbs-down"
+              type="Entypo"
+              style={{fontSize: 20, color: '#fdcb9e'}}
+            />
+            <Text
+              style={{
+                color: '#fdcb9e',
+              }}>
+              {downvote}
+            </Text>
+          </Button>
+        </Left>
+        <Right>
+          <Button
+            transparent
+            iconLeft
+            onPress={() => {
+              Linking.openURL(`instagram://user?username=${item.instaId}`);
+            }}>
+            <Text
+              style={{
+                color: '#fdcb9e',
+              }}>
+              Open in
+            </Text>
+            <Icon
+              name="instagram"
+              type="Feather"
+              style={{fontSize: 20, color: '#fdcb9e'}}
+            />
+          </Button>
+        </Right>
+      </CardItem>
+    </Card>
+  );
+
+
+++++++++++++++++++++++++++++ Post file ++++++++++++++++++++++++++++++++++
