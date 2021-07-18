@@ -1,13 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import App from './App';
+import {Provider} from 'react-redux'
+import store from './store'
+
 
 
 const RootApp = () => {
     return (
-        <View>
+        <Provider store={store}>
             <App />
-        </View>
+        </Provider>
     )
 }
 
