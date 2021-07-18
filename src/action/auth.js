@@ -68,7 +68,7 @@ export const signIn = (data) => async (dispatch)=>{
     })
 }
 
-export const signout = ()=>async (dispatch)=>{
+export const signout = () => async (dispatch)=>{
     auth()
     .signOut()
     .then(()=>{

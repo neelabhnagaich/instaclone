@@ -15,7 +15,7 @@ export default EmptyContainer
 const styles = StyleSheet.create({
     emptyContainer:{
         flex: 1,
-        backgroundColor:"@1b262c",
+        backgroundColor:"#1b262c",
         justifyContent: 'center',
         alignItems: "center"
     }
