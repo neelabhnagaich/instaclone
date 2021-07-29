@@ -5,9 +5,9 @@ import database from '@react-native-firebase/database'
 
 // the user is created and signed in and also details ar sotred in db
 export const signUp = (data) => async (dispatch)=>{
-    console.log(data);
+    console.log("DATA",data);
     const {name,instaUserName,bio,email,password,country,image} = data
-    auth().createUserWithemailAndPassword(email,password)
+    auth().createUserWithEmailAndPassword(email,password)
     .then((data)=>{
         console.log(data);
         console.log("User creation was successful");
@@ -72,7 +72,7 @@ export const signout = () => async (dispatch)=>{
     auth()
     .signOut()
     .then(()=>{
-        console.error(error);
+       
         Snackbar.show({
             text:'Sign out success',
             textColor:'white',

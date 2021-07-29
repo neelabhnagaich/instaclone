@@ -66,10 +66,10 @@ const App = ({authState}) => {
         <NavigationContainer>
             <Stack.Navigator
             screenOptions={{
-                header: (props)=>{<CustomeHeader {...props} />}
+                header: (props)=>(<CustomeHeader {...props} />)
             }}
             >
-                {authState.isAuthenticate ? (
+                {authState.isAuthenticated ? (
                 <> 
                     <Stack.Screen name ="Home" component={Home} />
                     <Stack.Screen name ="AddPost" component={AddPost} />
@@ -77,8 +77,9 @@ const App = ({authState}) => {
                 </>
                 ) : 
                 (<> 
-                    <Stack.Screen name ="Signin" component={Signin} />
                     <Stack.Screen name ="Signup" component={Signup} />
+                    <Stack.Screen name ="Signin" component={Signin} />
+                    
                 </>
                 ) }
 

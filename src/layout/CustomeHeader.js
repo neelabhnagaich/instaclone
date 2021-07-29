@@ -22,7 +22,9 @@ const CustomeHeader = ({authState,signout,navigation}) => {
              backgroundColor:"#0f4c75"
          }}
         >
-            <Body>Social App</Body>
+            <Body>
+            <Title>Social App LCO</Title>
+            </Body>
             <Right>
                 {authState.isAuthenticated && (
                     <>
@@ -47,9 +49,9 @@ const CustomeHeader = ({authState,signout,navigation}) => {
     )
 }
 
-const mapStateToProps = (state)=>{
-    authstate:state.auth
-}
+const mapStateToProps = (state)=>({
+    authState: state.auth
+})
 
 const mapDispathToProps = {
     signout
