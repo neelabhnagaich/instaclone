@@ -28,12 +28,14 @@ const App = ({authState}) => {
     const dispatch = useDispatch()
 
     const onAuthStateChanged = (user)=>{
+        
         if(user){
             dispatch({
                 type: IS_AUTHENTICATED,
                 payload: true
             })
             console.log(user._user.uid)
+            console.log("Onsignin entering here.......");
             database()
             .ref(`/users/${user._user.uid}`)
             .on('value',(snapshot)=>{
@@ -77,8 +79,10 @@ const App = ({authState}) => {
                 </>
                 ) : 
                 (<> 
+                   <Stack.Screen name ="Signin" component={Signin} />
                     <Stack.Screen name ="Signup" component={Signup} />
-                    <Stack.Screen name ="Signin" component={Signin} />
+                    
+                    
                     
                 </>
                 ) }
