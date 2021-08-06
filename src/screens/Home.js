@@ -4,20 +4,18 @@ import {Container ,H1} from 'native-base'
 import { connect } from 'react-redux';
 import { getPosts } from '../action/post';
 import Post from '../components/Post';
-
-
+import EmptyContainer from '../components/EmptyContainer';
 
 const Home = ({UserDetails,getPosts,postState}) => {
-
-    const [posts, setPosts] = useState([])
-    // const [description, setDescription] = useState("")
-    // const [location, setLocation] = useState("")
-    
 
     useEffect(()=>{
         getPosts()
         
     },[])
+
+    if(postState.loading){
+        return <EmptyContainer />;
+    }
 
     return (
         <SafeAreaView style={styles.container}>
